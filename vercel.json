@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd app/ui && npm install && npm run build",
+  "outputDirectory": "app/api/www",
+  "devCommand": "cd app/ui && npm run start",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+} 

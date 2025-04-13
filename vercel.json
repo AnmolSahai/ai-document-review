@@ -3,6 +3,12 @@
   "outputDirectory": "app/api/www",
   "devCommand": "cd app/ui && npm run start",
   "framework": "vite",
+  "functions": {
+    "api/*.py": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index.py" },
     { "source": "/(.*)", "destination": "/" }

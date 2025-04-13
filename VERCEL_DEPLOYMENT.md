@@ -8,6 +8,20 @@ This document outlines the steps to deploy the AI Document Review application to
 2. Git repository with your code
 3. Vercel CLI (optional for local testing)
 
+## Recent Changes to Fix Deployment Issues
+
+1. **Reduced Serverless Function Size**:
+   - Removed heavy dependencies from `api/requirements.txt`
+   - Created a lightweight FastAPI implementation in `api/index.py`
+
+2. **Fixed Frontend Bundle Size Issues**:
+   - Added manual chunks configuration in Vite
+   - Increased the chunk size warning limit
+   - Implemented code splitting for large dependencies
+
+3. **Updated Vercel Configuration**:
+   - Added function configuration in `vercel.json` for increased memory and execution time
+
 ## Deployment Steps
 
 ### 1. Connect Repository to Vercel
@@ -46,8 +60,10 @@ After deployment, you can test the application at the provided URL.
 
 - If the API is not working, check the Vercel logs for any errors
 - Make sure all environment variables are correctly set
-- Verify that the serverless function execution time limits are sufficient for your API endpoints
-- For larger dependencies, you might need to use Vercel's Build Output API
+- If you still have issues with function size:
+  1. Consider moving to a dedicated server for your backend
+  2. Split the application into multiple smaller functions
+  3. Use external API services for heavy dependencies
 
 ## Local Testing
 
